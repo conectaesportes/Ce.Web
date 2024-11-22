@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <div>
         <img src={Logo} alt='Logotipo Quadra Livre'></img>
-      <h2>Login</h2>
+      <h2>Entre na{"\n"}sua conta</h2>
       <form onSubmit={handleLogin}>
         <input
           type="email"

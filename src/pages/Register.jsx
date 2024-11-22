@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Logo from '../assets/logo.svg';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -25,7 +26,8 @@ const Register = () => {
 
   return (
     <div>
-      <h2>Cadastro</h2>
+        <img src={Logo} alt='Logotipo Quadra Livre'></img>
+      <h2>Registre-se</h2>
       <form onSubmit={handleRegister}>
         <input
           type="email"
