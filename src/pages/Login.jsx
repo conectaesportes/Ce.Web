@@ -38,6 +38,10 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Entrar</button>
+        <button type="submit" className="google-register">
+          <i className="fa-brands fa-google"></i>
+          Entrar com o Google
+        </button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <p>

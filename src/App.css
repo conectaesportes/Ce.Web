@@ -33,6 +33,12 @@ input {
   padding-left: 10px;
 }
 
+label{
+  display: block;
+  text-align: left;
+  color: #000000;
+}
+
 button {
   height: 50px;
   margin-top: 1rem;
@@ -41,6 +47,16 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.google-register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #01AF63;
+  background-color: transparent;
+  border: 1px solid #01AF63;
+  gap: 8px;
 }
 
 button:hover {
