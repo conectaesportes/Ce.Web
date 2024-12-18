@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.svg';
+import "./Login.css";
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -21,7 +23,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className='Login'>
         <img src={Logo} alt='Logotipo Quadra Livre'></img>
       <h2>Entre na{"\n"}sua conta</h2>
       <form onSubmit={handleLogin}>

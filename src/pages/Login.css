@@ -1,0 +1,30 @@
+.Login{
+    padding: 20px;
+}
+
+button{
+    height: 50px;
+    margin-top: 1rem;
+    background-color: #01AF63;
+    width: 100%;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+.google-register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #01AF63;
+    background-color: transparent;
+    border: 1px solid #01AF63;
+    gap: 8px;
+}
+
+input {
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 10px;
+}
