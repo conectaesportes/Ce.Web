@@ -28,3 +28,25 @@ input {
     border-style: solid;
     margin-bottom: 10px;
 }
+
+label {
+    display: block;
+    text-align: left;
+    color: #000000;
+  }
+  
+  
+  
+  
+  img {
+    margin-bottom:
+      20px;
+  }
+  
+  h2 {
+    text-align: left;
+    font-size: 2rem;
+    white-space: pre-wrap;
+    line-height: 0.8;
+    color: #005832;
+  }

@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
+import DragList from './components/DragList';
 
 import "./Dashboard.css";
 
@@ -39,9 +40,14 @@ const Dashboard = () => {
   return (
     <div className='container-dashboard'>
 
+      <div className='overlay-navbar'>
+        <SearchBar></SearchBar>
+        <FilterBar></FilterBar>
+      </div>
+
       <div className='map'>
         {location ? (
-          <MapContainer center={[location.latitude, location.longitude]} zoom={13} style={{ height: '100vh', width: '100%' }}>
+          <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={13} style={{ height: 'inherit', width: 'inherit'}}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="&copy; OpenStreetMap contributors"
@@ -54,12 +60,13 @@ const Dashboard = () => {
           !error && <p>Obtendo localização...</p>
         )}
       </div>
-
-      <div className='overlay-navbar'>
-        <SearchBar></SearchBar>
-        <FilterBar></FilterBar>
+      
+      <DragList className='list-cards'></DragList>
+      {/* <div className='list-drag'>
+        <a>teste</a>
+      </div> */}
+      <div className='bottom-bar'>
       </div>
-
 
     </div>
   );
