@@ -28,7 +28,7 @@ const [translateY, setTranslateY] = useState(100); // Posição inicial (100% fo
     setIsDragging(false);
 
     // Decide a posição final: expandir ou recolher
-    setTranslateY((prev) => (prev > 50 ? 100 : 0));
+    setTranslateY((prev) => (prev > 50 ? 100 : 10));
   };
 
   return (   
@@ -46,7 +46,10 @@ const [translateY, setTranslateY] = useState(100); // Posição inicial (100% fo
         onTouchEnd={handleEnd}
         onMouseLeave={handleEnd}
       >
+        <div className="lista">
+
         <p>Arraste para cima ou para baixo!</p>
+        </div>
       </div>
   );
 };

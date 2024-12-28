@@ -1,12 +1,18 @@
+.bottom-element {
+  position: absolute;
+  z-index: 1;
+  bottom: 50px;
+  width: 100%;
+  height: inherit;
+  /* Para preencher todo o contêiner quando expandido */
+  color: white;
+  text-align: center;
+  transform: translateY(95%);
+  /* Começa fora da visualização */
+}
 
-  .bottom-element {
-    position: absolute;
-    bottom: 100px;
-    width: 100%;
-    height: 300px; /* Para preencher todo o contêiner quando expandido */
-    background: blue;
-    color: white;
-    text-align: center;
-    transform: translateY(100%); /* Começa fora da visualização */
-  }
-  
+.lista{
+  width: inherit;
+  height: inherit;
+  background-color: blueviolet;
+}

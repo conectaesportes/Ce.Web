@@ -46,6 +46,7 @@ const Dashboard = () => {
       </div>
 
       <div className='map'>
+        <DragList className='list-cards'></DragList>
         {location ? (
           <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={13} style={{ height: 'inherit', width: 'inherit'}}>
             <TileLayer
@@ -60,11 +61,6 @@ const Dashboard = () => {
           !error && <p>Obtendo localização...</p>
         )}
       </div>
-      
-      <DragList className='list-cards'></DragList>
-      {/* <div className='list-drag'>
-        <a>teste</a>
-      </div> */}
       <div className='bottom-bar'>
       </div>
 

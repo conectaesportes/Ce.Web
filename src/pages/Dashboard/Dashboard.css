@@ -8,6 +8,9 @@
 .map {
   height: calc(100vh - 210px);
   width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   position: relative;
 }
 
@@ -17,16 +20,6 @@
   top: 0;
 }
 
-.list-cards{
-  z-index: 1;
-}
-
-.list-drag{
-  height: 20px;
-  width: 100%;
-  background: red;
-  z-index: 1;
-}
 
 .leaflet-bar {
   display: none;
@@ -44,7 +37,7 @@
 }
 
 .bottom-bar {
-  z-index: 2;
+  z-index: 10;
   height: 60px;
   background: linear-gradient(90deg, rgba(0, 140, 79, 1) 0%, rgba(0, 204, 115, 1) 100%);
 }
