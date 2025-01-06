@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "./DragList.css";
+import "./DragList.scss";
 
 const DragList = () => {
 const [translateY, setTranslateY] = useState(100); // Posição inicial (100% fora da tela)

@@ -1,3 +1,5 @@
+@use '../../../constants';
+
 .bottom-element {
   position: absolute;
   z-index: 1;
@@ -14,5 +16,7 @@
 .lista{
   width: inherit;
   height: inherit;
-  background-color: blueviolet;
+  border-radius: 20px;
+  border-top: 10px solid constants.$DARK_GREEN;
+  background-color: white;
 }

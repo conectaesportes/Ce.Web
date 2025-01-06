@@ -1,0 +1,65 @@
+@use '../../constants';
+
+.container-dashboard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.map {
+  height: calc(100vh - 210px);
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.container-map{
+  position: absolute;
+  z-index: 0;
+  top: 0;
+}
+
+
+.leaflet-bar {
+  display: none;
+}
+
+.leaflet-bottom{
+  display: none;
+}
+
+
+.overlay-navbar {
+  height: 124px;
+  background-color: #ffffff;
+  justify-items: center;
+}
+
+.bottom-bar {
+  z-index: 10;
+  height: 60px;
+  background: constants.$GRADIENT;
+}
+
+.list-menu {
+  display: flex; /* Coloca os itens lado a lado */
+  list-style: none; /* Remove os marcadores padrão */
+  padding: 0; /* Remove o padding padrão */
+  margin: 12px; /* Remove a margem padrão */
+  justify-content: space-between;
+}
+
+.list-menu li {
+  margin-right: 15px; /* Espaçamento entre os itens */
+  font-size: 30px;
+  color: constants.$WHITE;
+}
+
+/* Para remover a margem do último item */
+.list-menu li:last-child {
+  margin-right: 0;
+}
+

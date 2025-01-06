@@ -6,7 +6,7 @@ import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
 import DragList from './components/DragList';
 
-import "./Dashboard.css";
+import "./Dashboard.scss";
 
 const Dashboard = () => {
   const [location, setLocation] = useState(null); // Para armazenar latitude e longitude
@@ -48,7 +48,7 @@ const Dashboard = () => {
       <div className='map'>
         <DragList className='list-cards'></DragList>
         {location ? (
-          <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={13} style={{ height: 'inherit', width: 'inherit'}}>
+          <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={13} style={{ height: 'inherit', width: 'inherit' }}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="&copy; OpenStreetMap contributors"
@@ -62,6 +62,20 @@ const Dashboard = () => {
         )}
       </div>
       <div className='bottom-bar'>
+        <ul className='list-menu'>
+          <li className='menu-item'>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          </li>
+          <li className='menu-item'>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+          </li>
+          <li className='menu-item'>
+            <i class="fa fa-comments" aria-hidden="true"></i>
+          </li>
+          <li className='menu-item'>
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </li>
+        </ul>
       </div>
 
     </div>

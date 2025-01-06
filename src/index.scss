@@ -1,14 +1,15 @@
+@use './constants';
+
 :root {
   font-family: 'Inter', sans-serif;
-  
 }
 
 body{
+  background: constants.$GRADIENT;
   height: calc(100vh - 20px);
   width: calc(100vw - 20px);
   display: block;
   margin: 10px;
-  background: linear-gradient(90deg, rgba(0,140,79,1) 0%, rgba(0,204,115,1) 100%);
 }
 
 
