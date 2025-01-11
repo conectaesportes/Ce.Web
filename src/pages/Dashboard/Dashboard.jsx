@@ -64,16 +64,16 @@ const Dashboard = () => {
       <div className='bottom-bar'>
         <ul className='list-menu'>
           <li className='menu-item'>
-            <i class="fa fa-home" aria-hidden="true"></i>
+            <i className="fa fa-home" aria-hidden="true"></i>
           </li>
           <li className='menu-item'>
-            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <i className="fa fa-calendar" aria-hidden="true"></i>
           </li>
           <li className='menu-item'>
-            <i class="fa fa-comments" aria-hidden="true"></i>
+            <i className="fa fa-comments" aria-hidden="true"></i>
           </li>
           <li className='menu-item'>
-            <i class="fa fa-user" aria-hidden="true"></i>
+            <i className="fa fa-user" aria-hidden="true"></i>
           </li>
         </ul>
       </div>
