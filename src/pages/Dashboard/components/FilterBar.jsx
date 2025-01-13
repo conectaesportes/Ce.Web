@@ -12,9 +12,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
-
 
 
 const FilterBar = () => {
@@ -51,13 +48,15 @@ const FilterBar = () => {
     };
 
     function handleChange(event, newValue) {
-        const { name } = event.target;
-        if (name == 'price') {
-            setPriceValue(newValue);
-        } else if (name == 'distance') {
-            setDistanceValue(newValue)
-        } else if (name == 'date'){
+        if (event.target === undefined) {
             setSelectedDateTime(newValue)
+        } else {
+            const { name } = event.target;
+            if (name == 'price') {
+                setPriceValue(newValue);
+            } else if (name == 'distance') {
+                setDistanceValue(newValue)
+            }
         }
         console.log(newValue);
     };
