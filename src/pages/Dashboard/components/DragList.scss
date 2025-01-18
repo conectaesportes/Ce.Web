@@ -13,10 +13,36 @@
   /* Começa fora da visualização */
 }
 
-.lista{
+.lista {
   width: inherit;
   height: inherit;
   border-radius: 20px;
+  color: black;
   border-top: 10px solid constants.$DARK_GREEN;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
+}
+
+.setacontainer{
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-self: end;
+}
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    /* Posição inicial */
+  }
+
+  50% {
+    transform: translateY(5px);
+    /* Movimenta para cima */
+  }
+}
+
+/* Classe para aplicar ao ícone */
+.iconfloat {
+  animation: float 1.5s infinite ease-in-out;
 }

@@ -5,6 +5,9 @@ import 'leaflet/dist/leaflet.css';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
 import DragList from './components/DragList';
+import logo from '../../assets/pin.svg';
+import user_pin from '../../assets/user-pin.svg';
+import arenas from "../../data/arenas";
 
 import "./Dashboard.scss";
 
@@ -22,7 +25,7 @@ const Dashboard = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setLocation({ latitude, longitude });
+          //setLocation({ latitude, longitude });
           setError(null); // Limpa qualquer erro anterior
         },
         (err) => {
@@ -33,9 +36,23 @@ const Dashboard = () => {
     };
 
     getLocation(); // Chama a função automaticamente
+    setLocation({latitude: -6.4809207708582175, longitude: -36.15237888779963});
   }, []);
 
   console.log(location)
+
+  const customIcon = new L.Icon({
+    iconUrl: logo, // URL do ícone
+    iconSize: [40, 40], // Tamanho do ícone
+    iconAnchor: [20, 40], // Ponto de ancoragem (base do pin)
+    popupAnchor: [0, -40] // Ponto de ancoragem do popup
+  });
+  const userPin = new L.Icon({
+    iconUrl: user_pin, // URL do ícone
+    iconSize: [20, 20], // Tamanho do ícone
+    iconAnchor: [10, 20], // Ponto de ancoragem (base do pin)
+    popupAnchor: [0, -20] // Ponto de ancoragem do popup
+  });
 
   return (
     <div className='container-dashboard'>
@@ -48,13 +65,20 @@ const Dashboard = () => {
       <div className='map'>
         <DragList className='list-cards'></DragList>
         {location ? (
-          <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={13} style={{ height: 'inherit', width: 'inherit' }}>
+          <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={15} style={{ height: 'inherit', width: 'inherit' }}>
             <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
               attribution="&copy; OpenStreetMap contributors"
             />
-            <Marker position={[location.latitude, location.longitude]}>
-              <Popup>Um marcador simples!</Popup>
+            {arenas.map((arena, chave) => {
+              return(
+              <Marker key={chave} position={arena.endereco.coordenadas} icon={customIcon}>
+                <Popup>{arena.nome}</Popup>
+              </Marker>
+              );
+            })}
+            <Marker position={[location.latitude, location.longitude]} icon={userPin}>
+              <Popup>Seu local</Popup>
             </Marker>
           </MapContainer>
         ) : (

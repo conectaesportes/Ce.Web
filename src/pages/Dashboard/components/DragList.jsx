@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 import "./DragList.scss";
+import CardList from "./CardList";
 
 const DragList = () => {
-const [translateY, setTranslateY] = useState(100); // Posição inicial (100% fora da tela)
+  const [translateY, setTranslateY] = useState(100); // Posição inicial (100% fora da tela)
   const [isDragging, setIsDragging] = useState(false);
   const startY = useRef(0); // Referência para a posição inicial
 
@@ -31,26 +32,28 @@ const [translateY, setTranslateY] = useState(100); // Posição inicial (100% fo
     setTranslateY((prev) => (prev > 50 ? 100 : 10));
   };
 
-  return (   
-      <div
-        className="bottom-element"
-        style={{
-          transform: `translateY(${translateY}%)`,
-          transition: isDragging ? "none" : "transform 0.2s ease-in-out",
-        }}
-        onMouseDown={handleStart}
-        onTouchStart={handleStart}
-        onMouseMove={handleMove}
-        onTouchMove={handleMove}
-        onMouseUp={handleEnd}
-        onTouchEnd={handleEnd}
-        onMouseLeave={handleEnd}
-      >
-        <div className="lista">
-
-        <p>Arraste para cima ou para baixo!</p>
+  return (
+    <div
+      className="bottom-element"
+      style={{
+        transform: `translateY(${translateY}%)`,
+        transition: isDragging ? "none" : "transform 0.2s ease-in-out",
+      }}
+      onMouseDown={handleStart}
+      onTouchStart={handleStart}
+      onMouseMove={handleMove}
+      onTouchMove={handleMove}
+      onMouseUp={handleEnd}
+      onTouchEnd={handleEnd}
+      onMouseLeave={handleEnd}
+    >
+      <div className="lista">
+        <div className="setacontainer">
+          <i class="fa-solid fa-chevron-up iconfloat"></i>
         </div>
+        <CardList></CardList>
       </div>
+    </div>
   );
 };
 
