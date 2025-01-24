@@ -9,7 +9,7 @@ const CardList = () => {
         <div className="card-list" style={{width: '100%', height: '95%', display:'flex', flexDirection: 'column', alignItems: 'center'}}>
             {arenas.map((arena, key)=>{
                return(
-                   <Card key={key} logo={arena.logo} nome={arena.nome} endereco={arena.endereco}></Card>
+                   <Card key={key} ambiente={arena}></Card>
                ) 
             })}
 

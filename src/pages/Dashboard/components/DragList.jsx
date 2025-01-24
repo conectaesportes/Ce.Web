@@ -49,7 +49,7 @@ const DragList = () => {
     >
       <div className="lista">
         <div className="setacontainer">
-          <i class="fa-solid fa-chevron-up iconfloat"></i>
+          <i className="fa-solid fa-chevron-up iconfloat"></i>
         </div>
         <CardList></CardList>
       </div>

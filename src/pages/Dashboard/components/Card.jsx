@@ -1,15 +1,21 @@
 import './Card.scss';
-
+import { useNavigate } from 'react-router-dom';
 
 function Card(props) {
+    const navigate = useNavigate();
+    
+    const handleDivClick = () => {
+        navigate(`/ambiente-esportivo/${props.ambiente.slug}`); // Navega para a rota "/detalhes"
+      };
+    
     return(
-        <div className="card">
-            <div className='logo'>
-                <img className='image' src={props.logo}></img>
+        <div className="card" onClick={handleDivClick}>
+            <div className='logo-container'>
+                <img className='logo-quadra' src={props.ambiente.logo}></img>
             </div>
             <div className="info">
-                <h3 className='titulo'>{props.nome}</h3>
-                <p className='endereco'>{`${props.endereco.rua}, ${props.endereco.numero} - ${props.endereco.bairro}`}</p>
+                <h3 className='titulo'>{props.ambiente.nome}</h3>
+                <p className='endereco'>{`${props.ambiente.endereco.rua}, ${props.ambiente.endereco.numero} - ${props.ambiente.endereco.bairro}`}</p>
             </div>
         </div>
     );

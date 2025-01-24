@@ -1,28 +1,34 @@
 @use '../../../constants.scss';
 
 .card {
-    width: 95%;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
     display: flex;
+    background-color: white;
     color: black;
     height: 150px;
-    border: 2px constants.$GRAY solid;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-bottom: 4px #008C4F solid;
 }
 
-.logo {
-    width: 150px;
-    height: 150px;
+.logo-container {
+    width: 120px;
+    height: 120px;
     overflow: hidden;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border: 1px constants.$DARK_GREEN solid;
+    border-radius: 10px;
+    position: relative;
+    margin-left: 15px;
+    //box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.image {
+.logo-quadra {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    
 }
 
 .info{
@@ -30,15 +36,17 @@
     flex-direction: column;
     justify-content: start;
     width: calc(100% - 150px);
+    height: 100%;
     text-align: left;
 }
 
 .titulo{
-    color: constants.$DARK_GREEN;
-    margin: 10px 0 0 10px;
+    color: black;
+    margin-bottom: 0;
 }
 
 .endereco{
-    font-size: 0.7rem;
-    margin: 10px 0 0 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ACA7A7;
 }

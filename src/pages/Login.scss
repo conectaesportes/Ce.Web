@@ -1,53 +1,55 @@
 @use '../constants.scss';
 
-.Login{
-    padding: 20px;
-    height: 100%;
-    background: constants.$BACKGROUND;
+.Login {
+  padding: 20px;
+  height: 100%;
+  background: constants.$BACKGROUND;
 }
 
-button{
-    height: 50px;
-    margin-top: 1rem;
-    background-color: constants.$BTN_GREEN;
-    width: 100%;
-    color: constants.$WHITE;
-    border: none;
-    cursor: pointer;
-  }
-  
+button {
+  height: 50px;
+  margin-top: 1rem;
+  background-color: constants.$BTN_GREEN;
+  width: 100%;
+  color: constants.$WHITE;
+  border: none;
+  cursor: pointer;
+}
+
 .google-register {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: constants.$BTN_GREEN;
-    background-color: transparent;
-    border: 1px solid constants.$BTN_GREEN;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: constants.$BTN_GREEN;
+  background-color: transparent;
+  border: 1px solid constants.$BTN_GREEN;
+  gap: 8px;
 }
 
 input {
-    width: 100%;
-    border-width: 1px;
-    border-style: solid;
-    margin-bottom: 10px;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 10px;
 }
 
 label {
-    display: block;
-    text-align: left;
-    color: constants.$BLACK;
-  }
-  
-  img {
-    margin-bottom:
-      20px;
-  }
-  
-  h2 {
-    text-align: left;
-    font-size: 2rem;
-    white-space: pre-wrap;
-    line-height: 0.8;
-    color: constants.$DARK_GREEN;
-  }
+  display: block;
+  text-align: left;
+  color: constants.$BLACK;
+}
+
+.logo{
+  width: 100%;
+  height: max-content;
+  margin-bottom:
+    20px;
+}
+
+h2 {
+  text-align: left;
+  font-size: 2rem;
+  white-space: pre-wrap;
+  line-height: 0.8;
+  color: constants.$DARK_GREEN;
+}

@@ -1,0 +1,40 @@
+@use '../../../constants.scss';
+
+.container-quadra-card{
+    height: 150px;
+    margin: 0 10px;
+    border: 1px green solid;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+}
+
+.container-img{
+    width: 150px;
+    height: 100%;
+}
+
+.foto-quadra{
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    object-fit: cover;
+}
+.container-info{
+    display: flex;
+    flex-direction: column;
+}
+
+h3{
+    margin: 10px 0;
+}
+
+.reserva-botao{
+    width: 50%;
+    height: 30px;
+    background: constants.$GRADIENT;
+    font-weight: 700;
+    margin: 10px;
+    align-self: flex-end;
+}

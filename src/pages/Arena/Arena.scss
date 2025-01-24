@@ -1,0 +1,48 @@
+.container-arena{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 30px;
+}
+
+.header{
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+}
+
+.container-logo{
+    width: 150px;
+    height: 150px;
+}
+
+.container-info{
+    flex: 1;
+    margin-left: 15px;
+}
+
+.title{
+    margin: 0;
+    font-size: 20px;
+    color: white;
+}
+
+p{
+    margin: 0;
+}
+
+
+.main{
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-areas{  
+    overflow: auto;
+}

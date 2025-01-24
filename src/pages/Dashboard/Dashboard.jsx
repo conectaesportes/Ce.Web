@@ -42,6 +42,7 @@ const Dashboard = () => {
   console.log(location)
 
   const customIcon = new L.Icon({
+    className: 'icon-pin',
     iconUrl: logo, // URL do ícone
     iconSize: [40, 40], // Tamanho do ícone
     iconAnchor: [20, 40], // Ponto de ancoragem (base do pin)
@@ -65,7 +66,7 @@ const Dashboard = () => {
       <div className='map'>
         <DragList className='list-cards'></DragList>
         {location ? (
-          <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={15} style={{ height: 'inherit', width: 'inherit' }}>
+          <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={14} style={{ height: 'inherit', width: 'inherit' }}>
             <TileLayer
               url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
               attribution="&copy; OpenStreetMap contributors"

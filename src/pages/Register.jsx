@@ -29,7 +29,7 @@ const Register = () => {
 
   return (
     <div className='Register'>
-      <img src={Logo} alt='Logotipo Quadra Livre'></img>
+      <img className='logo' src={Logo} alt='Logotipo Quadra Livre'></img>
       <h2>Registre-se</h2>
       <form onSubmit={handleRegister}>
         <input
