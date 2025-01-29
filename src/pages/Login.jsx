@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import {useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { login } from '../api/authApi';
+
+
 import Logo from '../assets/logo.svg';
 import "./Login.scss";
 
@@ -8,17 +12,20 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const {login: loginUser} = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find((user) => user.email === email && user.password === password);
-
-    if (user) {
+    setError('');
+    
+    try {
+      const { token} = await login(email, password); //Chamada http
+      loginUser(token); // Atualiza o contexto
       navigate('/dashboard');
-    } else {
-      setError('Credenciais inválidas');
+    } catch (err) {
+      setError(`'Credenciais inválidas'`);
+      console.log(`${err}`);
     }
   };
 

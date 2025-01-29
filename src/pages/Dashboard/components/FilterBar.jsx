@@ -135,7 +135,7 @@ const FilterBar = () => {
                     <h2 id="parent-modal-title">Data e Hora</h2>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-                        <MobileDateTimePicker name="date" onChange={handleChange} defaultValue={dayjs('2025-01-1T14:00')} />
+                        <MobileDateTimePicker name="date" onChange={handleChange} defaultValue={dayjs(selectedDateTime)} />
                     </LocalizationProvider>
                     <Button sx={{ marginTop: '20px' }} variant="contained" color="success">
                         Filtrar
