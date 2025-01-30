@@ -1,18 +1,41 @@
 @use '../constants.scss';
 
 .Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-form{
+  margin-top: 30px;
   padding: 20px;
-}
 
-button {
-  height: 50px;
-  margin-top: 1rem;
-  width: 100%;
-}
+  .title {
+    text-align: left;
+    font-size: 2.5rem;
+    white-space: pre-wrap;
+    line-height: 1;
+    color: constants.$DARK_GREEN;
+    width: 80%;
+    margin-bottom: 20px;
+  }
 
-.google-register {
-  gap: 8px;
-  width: 100%;
+  button{
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  p{
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  a{
+    color: constants.$DARK_GREEN;
+    text-decoration: none;
+    font-weight: 700;
+  }
 }
 
 input {
@@ -20,49 +43,31 @@ input {
   width: 100%;
 }
 
-.logo-ql {
-  width: 100px;
-  margin-bottom: 20px;
-  align-self: left;
+.button-green {
+  height: 50px;
+  background-color: constants.$BTN_GREEN;
+  color: constants.$WHITE;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
 }
 
-h2 {
-  font-size: 2rem;
-  line-height: 0.8;
-  width: 100%;
+.google-register {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: constants.$BTN_GREEN;
+  background-color: transparent;
+  border: 1px solid constants.$BTN_GREEN;
+  gap: 12px;
 }
+
 
 
 
 @media (min-width: 1024px) {
-  .Login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  button {
-    height: 60px;
-    margin-top: 1.5rem;
-    background-color: constants.$BTN_GREEN;
-    width: 80%;
-    color: constants.$WHITE;
-    border: none;
-    cursor: pointer;
-  }
-
-  .google-register {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: constants.$BTN_GREEN;
-    background-color: transparent;
-    border: 1px solid constants.$BTN_GREEN;
-    gap: 12px;
-    width: 80%;
-    margin-top: 1rem;
-  }
+  
 
   input {
     width: 80%;
@@ -78,21 +83,7 @@ h2 {
     margin-bottom: 5px;
   }
 
-  .logo-ql {
-    width: 200px;
-    height: auto;
-    margin-bottom: 30px;
-  }
-
-  h2 {
-    text-align: left;
-    font-size: 2.5rem;
-    white-space: pre-wrap;
-    line-height: 1;
-    color: constants.$DARK_GREEN;
-    width: 80%;
-    margin-bottom: 1rem;
-  }
+  
 
   form {
     display: flex;
