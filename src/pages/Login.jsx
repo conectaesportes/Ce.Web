@@ -31,7 +31,7 @@ const Login = () => {
 
   return (
     <div className='Login'>
-        <img className='logo' src={Logo} alt='Logotipo Quadra Livre'></img>
+        <img className='logo-ql' src={Logo} alt='Logotipo Quadra Livre'></img>
       <h2>Entre na{"\n"}sua conta</h2>
       <form onSubmit={handleLogin}>
         <input
