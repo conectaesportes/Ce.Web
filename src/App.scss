@@ -16,6 +16,9 @@ input {
     border-radius: 6px;
     color: black;
     width: 100%;
+    &::placeholder {
+        color: constants.$GRAY;
+    }
 }
 
 button {
@@ -32,6 +35,7 @@ button {
 
 label{
     margin-bottom: 0.5rem;
+    color: constants.$DARK_GRAY;
 }
 
 img {

@@ -3,11 +3,13 @@
 .Login, .Register {
   align-items: center;
   justify-content: center;
+  flex: 1;
 
   .container-body {
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 100%;
   }
 
   .container-right {
@@ -26,7 +28,7 @@
 
 .container-form {
   margin: 30px 0;
-  padding: 30px;
+  padding: 2rem;
 
   form{
     display: flex;
@@ -57,19 +59,19 @@
     text-decoration: none;
     font-weight: 700;
   }
+  .button-green {
+    background-color: constants.$BTN_GREEN;
+    color: constants.$WHITE;
+  }
+  
+  .google-register {
+    background-color: transparent;
+    color: constants.$DARK_GRAY;
+    border: 1px solid constants.$DARK_GRAY;
+    gap: 12px;
+  }
 }
 
-.button-green {
-  background-color: constants.$BTN_GREEN;
-  color: constants.$WHITE;
-}
-
-.google-register {
-  background-color: transparent;
-  color: constants.$DARK_GRAY;
-  border: 1px solid constants.$DARK_GRAY;
-  gap: 12px;
-}
 
 
 
@@ -89,45 +91,49 @@
       background-image: url('../assets/banner.svg');
       background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
     }
 
     .container-right {
       width: 50%;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
   }
 
   .container-form {
     height: fit-content;
     width: 65%;
+    padding: 4rem;
+
     border-radius: 10px;
     box-shadow: -43px 24px 40px 0px #00000014,
       0px 6px 16px 0px #0000000A,
       17px 3px 52px 0px #0000001C;
 
-    .title {
-      font-size: 1.2em;
-    }
+    // .title {
+    //   font-size: 1.2em;
+    // }
 
-    label{
-      font-size: .5rem;
-    }
+    // label{
+    //   font-size: 1rem;
+    // }
 
-    input{
-      font-size: 0.5rem;
-      padding: 0.5rem;
-      margin-bottom: 0.7rem;
-    }
+    // input{
+    //   font-size: 0.5rem;
+    //   padding: 0.5rem;
+    //   margin-bottom: 0.7rem;
+    // }
 
-    button {
-      font-size: 0.6rem;
-      padding: 0.7rem;
-    }
+    // button {
+    //   font-size: 0.6rem;
+    //   padding: 0.7rem;
+    // }
 
-    p {
-      font-size: 0.5rem;
-    }
+    // p {
+    //   font-size: 0.5rem;
+    // }
   }
 
 }

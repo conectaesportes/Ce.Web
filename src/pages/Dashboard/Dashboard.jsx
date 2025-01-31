@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
 import DragList from './components/DragList';
+import Header from '../components/Header';
 import logo from '../../assets/pin.svg';
 import user_pin from '../../assets/user-pin.svg';
 import arenas from "../../data/arenas";
@@ -57,14 +58,14 @@ const Dashboard = () => {
 
   return (
     <div className='container-dashboard'>
-
+      <Header></Header>
       <div className='overlay-navbar'>
         <SearchBar></SearchBar>
         <FilterBar></FilterBar>
       </div>
 
       <div className='map'>
-        <DragList className='list-cards'></DragList>
+        
         {location ? (
           <MapContainer className='container-map' center={[location.latitude, location.longitude]} zoom={14} style={{ height: 'inherit', width: 'inherit' }}>
             <TileLayer
@@ -85,6 +86,7 @@ const Dashboard = () => {
         ) : (
           !error && <p>Obtendo localização...</p>
         )}
+      <DragList className='list-cards'></DragList>
       </div>
       <div className='bottom-bar'>
         <ul className='list-menu'>
