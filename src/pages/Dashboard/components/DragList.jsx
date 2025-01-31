@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import  { useState, useRef } from "react";
 import "./DragList.scss";
 import CardList from "./CardList";
 
@@ -49,7 +49,7 @@ const DragList = () => {
     >
       <div className="lista">
         <div className="setacontainer">
-          <i className="fa-solid fa-chevron-up iconfloat"></i>
+          <i className="seta-icon fa-solid fa-chevron-up iconfloat"></i>
         </div>
         <CardList></CardList>
       </div>

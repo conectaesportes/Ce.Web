@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    background-color: constants.$LIGHT_GREEN;
 }
 
 input {
@@ -45,3 +46,16 @@ img {
     border-radius: 10px;
     margin: 0;
 }
+
+
+.google-register {
+    background-color: transparent;
+    color: constants.$DARK_GRAY;
+    border: 1px solid constants.$DARK_GRAY;
+    gap: 12px;
+  }
+  .button-green {
+    background-color: constants.$BTN_GREEN;
+    color: constants.$WHITE;
+  }
+  

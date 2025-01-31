@@ -8,15 +8,17 @@
 }
 
 .map {
-  height: calc(100vh - 210px);
   width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
+  flex: 1;
 }
 
 .container-map{
+  width: 100%;
+  height: 100%;
   position: absolute;
   z-index: 0;
   top: 0;
@@ -40,6 +42,7 @@
   height: 124px;
   background-color: #ffffff;
   justify-items: center;
+  border-bottom: 4px solid constants.$LIGHT_GREEN;
 }
 
 .bottom-bar {
@@ -70,6 +73,46 @@
 
 
 
+
 @media (min-width: 720px) {
+
+  .map{
+    flex-direction: row;
+    position: static;
+    width: 100%;
+    
+  }
+
+  .bar{
+    width: 50%;
+    justify-content: center;
+    gap: 1rem;
+  }
  
+  .bottom-element{
+    transform: none !important;
+    position: static;
+    //width: 40%;
+    flex: 1;
+
+    .card:first-child {
+      border-top: 4px #008C4F solid;;
+    }
+
+    .lista{
+      border: none;
+      border-radius: 0;
+      box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+
+      .seta-icon{
+        display: none;
+      }
+    }
+    
+  }
+
+  .container-map{
+    position: static;
+    flex: 2;
+  }
 }
