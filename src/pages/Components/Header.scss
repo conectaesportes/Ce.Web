@@ -1,45 +1,26 @@
 // Header.scss
+@use '../../constants.scss';
 
 .header-component {
     width: 100%;
     height: 80px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #ffffff;
     color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
 
     .logo {
         width: 170px;
         height: fit-content;
-        font-weight: bold;
-        margin-left: 20px;
     }
 
     .nav {
-        display: flex;
-        gap: 1rem;
-
-        ul {
-            display: flex;
-            flex-direction: row;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        a {
-            color: #333;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-
-            &:hover {
-                background-color: #444;
-            }
-        }
+        display: none;
     }
 
     .menu-icon {
@@ -49,24 +30,44 @@
     }
 }
 
-@media (max-width: 768px) {
-    .header-component { 
-        justify-content: center;
+@media (min-width: 720px) {
+    .header-component {
+        justify-content: space-between;
+        height: 40px;
+
+
 
         .nav {
-            display: none;
+            display: flex;
             flex-direction: column;
-            width: 100%;
+            margin-right: 20px;
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+            }
+
+            li {
+                list-style: none;
+            }
 
             a {
-                padding: 1rem;
-                width: 100%;
-                text-align: left;
+                color: #333;
+                text-decoration: none;
+                font-size: 0.6rem;
+                padding: 4px;
+                border-radius: 4px;
+
+                &:hover {
+                    border-bottom: 4px solid constants.$BTN_GREEN;
+                }
             }
         }
 
         .logo {
-            margin-left: 0;
+            width: 100px;
+            margin-left: 20px;
         }
 
         .menu-icon {
@@ -74,7 +75,7 @@
         }
     }
 
-    .header.active .nav {
-        display: flex;
-    }
+    // .header.active .nav {
+    //     display: flex;
+    // }
 }

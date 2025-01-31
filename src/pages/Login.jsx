@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { login } from '../api/authApi';
 
-import "./Login.scss";
+import "./Auth.scss";
 import Header from './Components/Header';
 
 
@@ -31,32 +31,43 @@ const Login = () => {
   return (
     <div className='Login'>
       <Header></Header>
-      <div className='container-form'>
-        <h2 className='title'>Entre na{"\n"}sua conta</h2>
-        <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit" className='button-green'>Entrar</button>
-          <button type="submit" className="google-register">
-            <i className="fa-brands fa-google"></i>
-            Entrar com o Google
-          </button>
-        </form>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-      <p>
-        Não tem uma conta? <a href="/register">Cadastre-se</a>
-      </p>
+      <div className='container-body'>
+
+        <div className='container-left'></div>
+        <div className='container-right '>
+          <div className='container-form'>
+            <h2 className='title'>Entre na{"\n"}sua conta</h2>
+            <form onSubmit={handleLogin}>
+              <label htmlFor="mail">E-mail de acesso:</label>
+              <input
+                id='mail'
+                type="email"
+                placeholder="jogador@quadralivre.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label htmlFor="password">Senha:</label>
+              <input
+                id='password'
+                type="password"
+                placeholder="••••••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="submit" className='button-green'>Entrar</button>
+              <button type="submit" className="google-register">
+                <i className="fa-brands fa-google"></i>
+                Entrar com o Google
+              </button>
+            </form>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <p>
+              Não tem uma conta? <a href="/register">Cadastre-se</a>
+            </p>
+          </div>
+        </div>
       </div>
+
     </div>
   );
 };

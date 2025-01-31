@@ -1,0 +1,133 @@
+@use '../constants.scss';
+
+.Login, .Register {
+  align-items: center;
+  justify-content: center;
+
+  .container-body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .container-right {
+    width: 100%;
+    background-color: white;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+  
+
+  .container-left {
+    display: none;
+  }
+}
+
+
+.container-form {
+  margin: 30px 0;
+  padding: 30px;
+
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    text-align: left;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: constants.$DARK_GREEN;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  p {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  a {
+    color: constants.$DARK_GREEN;
+    text-decoration: none;
+    font-weight: 700;
+  }
+}
+
+.button-green {
+  background-color: constants.$BTN_GREEN;
+  color: constants.$WHITE;
+}
+
+.google-register {
+  background-color: transparent;
+  color: constants.$DARK_GRAY;
+  border: 1px solid constants.$DARK_GRAY;
+  gap: 12px;
+}
+
+
+
+
+@media (min-width: 720px) {
+
+  .Login, .Register {
+
+    .container-body {
+      background-color: constants.$BTN_GREEN;
+      
+    }
+
+    .container-left {
+      display: flex;
+      width: 50%;
+      background-image: url('../assets/banner.svg');
+      background-size: contain;
+      background-position: center;
+    }
+
+    .container-right {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .container-form {
+    height: fit-content;
+    width: 65%;
+    border-radius: 10px;
+    box-shadow: -43px 24px 40px 0px #00000014,
+      0px 6px 16px 0px #0000000A,
+      17px 3px 52px 0px #0000001C;
+
+    .title {
+      font-size: 1.2em;
+    }
+
+    label{
+      font-size: .5rem;
+    }
+
+    input{
+      font-size: 0.5rem;
+      padding: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    button {
+      font-size: 0.6rem;
+      padding: 0.7rem;
+    }
+
+    p {
+      font-size: 0.5rem;
+    }
+  }
+
+}

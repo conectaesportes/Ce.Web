@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../assets/logo.svg';
-import "./Register.scss";
+
+import "./Auth.scss";
+import Header from './Components/Header';
 
 
 const Register = () => {
@@ -29,41 +30,50 @@ const Register = () => {
 
   return (
     <div className='Register'>
-      {/* <img className='logo' src={Logo} alt='Logotipo Quadra Livre'></img> */}
-      <h2>Registre-se</h2>
-      <form onSubmit={handleRegister}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label>Confirme sua senha:</label>
-        <input
-          type="password"
-          placeholder="Senha"
-          value={passwordCheck}
-          onChange={(e) => setPasswordCheck(e.target.value)}
-        />
-        <button type="submit">
-          Cadastrar
-        </button>
-        <button type="submit" className='google-register'>
-          <i className="fa-brands fa-google"></i>
-          Entrar com o Google
-        </button>
-      </form>
-      {success && <p style={{ color: 'green' }}>{success}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <p>
-        Já tem uma conta? <a href="/">Faça login</a>
-      </p>
+      <Header></Header>
+      <div className='container-body'>
+        <div className='container-left'></div>
+        <div className='container-right'>
+          <div className='container-form'>
+            <h2 className='title'>Registre-se</h2>
+            <form onSubmit={handleRegister}>
+            <label htmlFor="mail">Digite seu melhor e-mail:</label>
+              <input
+                type="email"
+                placeholder="jogador@quadralivre.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label htmlFor="password">Senha:</label>
+              <input
+                type="password"
+                placeholder="••••••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <label>Confirme sua senha:</label>
+              <input
+                type="password"
+                placeholder="••••••••••••"
+                value={passwordCheck}
+                onChange={(e) => setPasswordCheck(e.target.value)}
+              />
+              <button type="submit" className='button-green'>
+                Cadastrar
+              </button>
+              <button type="submit" className='google-register'>
+                <i className="fa-brands fa-google"></i>
+                Entrar com o Google
+              </button>
+            </form>
+            {success && <p style={{ color: 'green' }}>{success}</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <p>
+              Já tem uma conta? <a href="/">Faça login</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
