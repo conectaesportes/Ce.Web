@@ -1,8 +1,8 @@
 .bar{
     height: 30px;
-    margin-top: 10px;
-    width: 100%;
+    width: fit-content;
     display: flex;
+    gap: .5rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
@@ -27,7 +27,7 @@
     font-size: 20px;
 }
 
-.MuiBox-root{
-    width: 15rem;
-    padding: 3rem;
-}
+// .MuiBox-root{
+//     width: 15rem;
+//     padding: 3rem;
+// }

@@ -29,7 +29,7 @@ const Login = () => {
   };
 
   return (
-    <div className='Login'>
+    <div className='Login page'>
       <Header></Header>
       <div className='container-body'>
 

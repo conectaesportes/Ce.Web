@@ -1,0 +1,32 @@
+@use '../../constants.scss';
+
+/* Estiliza a label do Tooltip */
+.leaflet-tooltip {
+    background-color: rgba(255, 255, 255, 0.3); /* Cor de fundo */
+    color: constants.$DARK_GRAY; /* Cor do texto */
+    font-size: .9rem;
+    font-weight: bold;
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 5px 10px;
+    border: 2px solid constants.$LIGHT_GREEN; /* Borda personalizada */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+/* Estiliza a setinha do Tooltip */
+.leaflet-tooltip::before {
+    border-top-color: constants.$LIGHT_GREEN; /* Cor da seta */
+}
+
+
+
+.icon-pin {
+    object-fit: contain;
+}
+
+.leaflet-bar {
+    display: none;
+}
+
+.leaflet-bottom {
+    display: none;
+}

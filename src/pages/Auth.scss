@@ -1,9 +1,12 @@
-@use '../constants.scss';
+@use "../constants.scss";
 
-.Login, .Register {
-  align-items: center;
-  justify-content: center;
-  flex: 1;
+.Login,
+.Register {
+  
+
+  .header-component {
+    justify-content: center;
+  }
 
   .container-body {
     display: flex;
@@ -15,22 +18,18 @@
   .container-right {
     width: 100%;
     background-color: white;
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
   }
-  
 
   .container-left {
     display: none;
   }
 }
 
-
 .container-form {
   margin: 30px 0;
   padding: 2rem;
 
-  form{
+  form {
     display: flex;
     flex-direction: column;
   }
@@ -59,25 +58,23 @@
     text-decoration: none;
     font-weight: 700;
   }
-  
 }
 
-
-
-
 @media (min-width: 720px) {
-
-  .Login, .Register {
+  .Login,
+  .Register {
+    .header-component {
+      justify-content: space-between;
+    }
 
     .container-body {
       background-color: constants.$BTN_GREEN;
-      
     }
 
     .container-left {
       display: flex;
       width: 50%;
-      background-image: url('../assets/banner.svg');
+      background-image: url("../assets/banner.svg");
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
@@ -88,6 +85,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
     }
   }
 
@@ -97,9 +96,8 @@
     padding: 4rem;
 
     border-radius: 10px;
-    box-shadow: -43px 24px 40px 0px #00000014,
-      0px 6px 16px 0px #0000000A,
-      17px 3px 52px 0px #0000001C;
+    box-shadow: -43px 24px 40px 0px #00000014, 0px 6px 16px 0px #0000000a,
+      17px 3px 52px 0px #0000001c;
 
     // .title {
     //   font-size: 1.2em;
@@ -124,5 +122,4 @@
     //   font-size: 0.5rem;
     // }
   }
-
 }

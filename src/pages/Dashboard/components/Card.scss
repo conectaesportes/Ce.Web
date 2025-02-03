@@ -18,7 +18,6 @@
     border: 1px constants.$DARK_GREEN solid;
     border-radius: 10px;
     position: relative;
-    margin-left: 15px;
     //box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -35,8 +34,8 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    width: calc(100% - 150px);
-    height: 100%;
+    width: calc(90% - 120px);
+    height: 120px;
     text-align: left;
 }
 

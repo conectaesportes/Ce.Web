@@ -1,40 +1,73 @@
 @use '../../../constants.scss';
 
 .container-quadra-card{
-    height: 150px;
-    margin: 0 10px;
+    height: 120px;
     border: 1px green solid;
     border-radius: 10px;
-    margin-bottom: 20px;
     overflow: hidden;
     display: flex;
+    justify-content: space-between;
+
+    .container-img{
+        display: flex;
+        justify-content: center;
+        width: 120px;
+        height: 100%;
+        cursor: pointer;
+        position: relative;
+
+        .ampliar{
+            position: absolute;
+            bottom: 0px;
+            background-color: rgba(255, 255, 255,0.5);
+            padding: .3rem;
+            color: constants.$DARK_GRAY;
+            font-size: .8rem;
+            border-radius: 5px; 
+        }
+    }
+    
+    .container-info{
+        width: calc(95% - 120px);
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        
+
+        .title{
+            margin: 0;
+            font-size: 1rem;
+        }
+
+
+        .descricao{
+            font-size: .8rem;
+            color: constants.$DARK_GRAY;
+        }
+    }
+    
+    
+    .reserva-botao{
+        width: 50%;
+        height: 30px;
+        align-self: flex-end;
+        margin-top: auto;
+        font-size: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+}
+.modal{
+
+    .imagem-ampliada{
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+    
+    .close-modal{
+        padding: 0.5;
+    }
 }
 
-.container-img{
-    width: 150px;
-    height: 100%;
-}
-
-.foto-quadra{
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    object-fit: cover;
-}
-.container-info{
-    display: flex;
-    flex-direction: column;
-}
-
-h3{
-    margin: 10px 0;
-}
-
-.reserva-botao{
-    width: 50%;
-    height: 30px;
-    background: constants.$GRADIENT;
-    font-weight: 700;
-    margin: 10px;
-    align-self: flex-end;
-}

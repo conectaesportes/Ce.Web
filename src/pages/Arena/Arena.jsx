@@ -2,6 +2,7 @@
 import arenas from '../../data/arenas';
 import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import AreaCard from './components/AreaCard';
+import Header from '../../pages/Components/Header';
 
 import './Arena.scss';
 
@@ -15,7 +16,8 @@ const Arena = () => {
     }
     
     return(
-        <div className='container-arena'>
+        <div className='container-arena page'>
+            <Header></Header>
             <div className='header'>
                 <div className='container-logo'>
                     <img src={pageData.logo}></img>
@@ -25,8 +27,8 @@ const Arena = () => {
                     <p>{pageData.endereco.rua}, {pageData.endereco.numero} - {pageData.endereco.bairro}</p>
                 </div>
             </div>
-            <div className='main'>
-                <h3 style={{marginLeft:'10px'}}>Quadras Livres</h3>
+            <div className='main-content'>
+                <h3>Quadras Livres</h3>
                 
                 <div className='list-areas'>
                 {pageData.areasDeJogo.map((area) => {

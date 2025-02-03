@@ -1,7 +1,24 @@
 import './Card.scss';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+
 
 function Card(props) {
+    
+    Card.propTypes = {
+        ambiente: PropTypes.shape({
+            slug: PropTypes.string.isRequired,
+            logo: PropTypes.string.isRequired,
+            nome: PropTypes.string.isRequired,
+            endereco: PropTypes.shape({
+                rua: PropTypes.string.isRequired,
+                numero: PropTypes.string.isRequired,
+                bairro: PropTypes.string.isRequired,
+            }).isRequired,
+        }).isRequired,
+    };
+    
     const navigate = useNavigate();
     
     const handleDivClick = () => {

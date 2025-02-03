@@ -181,7 +181,6 @@ const FilterBar = () => {
             <MobileDateTimePicker
               name="date"
               minDate={dateNow}
-              minTime={dateNow}
               format="DD/MM/YYYY HH:mm"
               label="Selecione dia e horário"
               minutesStep={30}

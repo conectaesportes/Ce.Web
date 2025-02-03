@@ -6,13 +6,15 @@
     height: 80px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
     color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 2;
+    padding: 0 20px;
 
     .logo {
         width: 170px;
@@ -24,7 +26,6 @@
     }
 
     .menu-icon {
-        display: none;
         font-size: 1.5rem;
         cursor: pointer;
     }
@@ -32,7 +33,6 @@
 
 @media (min-width: 720px) {
     .header-component {
-        justify-content: space-between;
         min-height: 40px;
         height: 5rem;
         max-height: 80px;
@@ -41,7 +41,6 @@
         .nav {
             display: flex;
             flex-direction: column;
-            margin-right: 20px;
 
             ul {
                 display: flex;
@@ -69,7 +68,6 @@
         .logo {
             //min-width: 100px;
             width: 10rem;
-            margin-left: 20px;
         }
 
         .menu-icon {
