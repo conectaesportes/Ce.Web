@@ -3,7 +3,6 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import "./AreaCard.scss";
 import PropTypes from "prop-types";
-import { height } from "@fortawesome/free-solid-svg-icons/fa0";
 
 const AreaCard = (props) => {
     AreaCard.propTypes = {
@@ -13,6 +12,7 @@ const AreaCard = (props) => {
         }).isRequired,
     };
 
+    
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const openModal = () => {
@@ -34,7 +34,9 @@ const AreaCard = (props) => {
         bgcolor: "background.paper",
         border: "none",
         borderRadius: ".5rem",
-        boxShadow: 24};
+        boxShadow: 24,
+    };
+
 
     return (
         <div className="container-quadra-card">
@@ -54,13 +56,19 @@ const AreaCard = (props) => {
                 <button className="reserva-botao button-green">Reservar</button>
             </div>
             <Modal
-                className="modal"
+                className="modal-img-ampliada"
                 open={modalIsOpen}
                 onClose={closeModal}
             >
                 <Box sx={{ ...style }}>
-                    <button className="close-modal" onClick={closeModal}>Fechar</button>
-                    <img className="imagem-ampliada" src={props.quadra.imgLink} alt="" />
+                    <img
+                        className="imagem-ampliada"
+                        src={props.quadra.imgLink}
+                        alt=""
+                    />
+                    <button className="close-modal" onClick={closeModal}>
+                        Fechar
+                    </button>
                 </Box>
             </Modal>
         </div>

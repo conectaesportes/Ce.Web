@@ -57,7 +57,15 @@
     }
 
 }
-.modal{
+
+.modal-img-ampliada{
+
+    .MuiBox-root{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1rem;
+    }
 
     .imagem-ampliada{
         width: 100%;
@@ -65,9 +73,14 @@
         aspect-ratio: 1 / 1;
         object-fit: cover;
     }
-    
+
     .close-modal{
-        padding: 0.5;
+        padding: .5rem;
+        width: fit-content;
+        background-color: constants.$ERROR;
+        color: constants.$BLACK;
+        font-weight: 500;
     }
+    
 }
 
