@@ -3,14 +3,19 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import "./AreaCard.scss";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const AreaCard = (props) => {
     AreaCard.propTypes = {
         quadra: PropTypes.shape({
             imgLink: PropTypes.string.isRequired,
             nome: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
         }).isRequired,
+        slug: PropTypes.string.isRequired,
     };
+
+    const navigate = useNavigate();
 
     
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -22,6 +27,10 @@ const AreaCard = (props) => {
     const closeModal = () => {
         setModalIsOpen(false);
     };
+
+    const handleClick = () => {
+        navigate(`/ambiente-esportivo/${props.slug}/${props.quadra.id}`) // Navega para a rota "/detalhes"
+};
 
     const style = {
         position: "absolute",
@@ -53,7 +62,7 @@ const AreaCard = (props) => {
                 <p className="descricao">
                     Tipo: Areia - Modalidade: Poliesportiva - Material incluso{" "}
                 </p>
-                <button className="reserva-botao button-green">Reservar</button>
+                <button className="reserva-botao button-green" onClick={handleClick}>Reservar</button>
             </div>
             <Modal
                 className="modal-img-ampliada"

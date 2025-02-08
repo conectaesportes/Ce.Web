@@ -6,6 +6,7 @@ import './App.scss';
 import Arena from './pages/Arena/Arena';
 import { AuthProvider } from './context/AuthContext';
 import Reserva from './pages/Reserva/Reserva';
+import Agendamento from './pages/Arena/Agendamento';
 
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/ambiente-esportivo/:slug" element={<Arena />} />
-            <Route path="/ambiente-esportivo/:slug/reserva" element={<Reserva />} />
+            <Route path="/ambiente-esportivo/:slug/:id" element={<Agendamento />} />
           </Routes>
         </div>
       </Router>

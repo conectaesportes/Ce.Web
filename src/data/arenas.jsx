@@ -33,6 +33,7 @@ const arenas = [
         ],
         "areasDeJogo": [
             {
+                "id": 1,
                 "nome": "Quadra de Areia 1",
                 "imgLink": "https://www.topsporteng.com.br/imagens-y/informacoes/quadra-areia-01.jpg",
                 "Descricao": "",
@@ -40,6 +41,7 @@ const arenas = [
                 "precoPorHora": 40.0,
             },
             {
+                "id": 2,
                 "nome": "Quadra de Areia 2",
                 "imgLink": "https://www.topsporteng.com.br/imagens-y/informacoes/quadra-areia-01.jpg",
                 "Descricao": "",
@@ -82,6 +84,7 @@ const arenas = [
         ],
         "areasDeJogo": [
             {
+                "id": 1,
                 "nome": "Quadra de Areia 1",
                 "imgLink": "https://www.topsporteng.com.br/imagens-y/informacoes/quadra-areia-01.jpg",
                 "Descricao": "",
@@ -89,20 +92,23 @@ const arenas = [
                 "precoPorHora": 40.0,
             },
             {
+                "id": 2,
                 "nome": "Quadra de Areia 2",
                 "imgLink": "https://www.topsporteng.com.br/imagens-y/informacoes/quadra-areia-01.jpg",
                 "Descricao": "",
                 "Tipo": "Areia",
                 "precoPorHora": 40.0,
             },
-            {
+            {   
+                "id": 3,
                 "nome": "Quadra de Areia 3",
                 "imgLink": "https://www.topsporteng.com.br/imagens-y/informacoes/quadra-areia-01.jpg",
                 "Descricao": "",
                 "Tipo": "Areia",
                 "precoPorHora": 40.0,
             },
-            {
+            {   
+                "id": 4,
                 "nome": "Quadra de Areia 4",
                 "imgLink": "https://www.topsporteng.com.br/imagens-y/informacoes/quadra-areia-01.jpg",
                 "Descricao": "",
@@ -110,6 +116,7 @@ const arenas = [
                 "precoPorHora": 40.0,
             },
             {
+                "id": 5,
                 "nome": "Quadra de Areia 5",
                 "imgLink": "https://www.topsporteng.com.br/imagens-y/informacoes/quadra-areia-01.jpg",
                 "Descricao": "",
@@ -117,6 +124,7 @@ const arenas = [
                 "precoPorHora": 40.0,
             },
             {
+                "id": 6,
                 "nome": "Quadra de Areia 6",
                 "imgLink": "https://www.topsporteng.com.br/imagens-y/informacoes/quadra-areia-01.jpg",
                 "Descricao": "",
