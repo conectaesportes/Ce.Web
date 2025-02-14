@@ -29,7 +29,7 @@ const AreaCard = (props) => {
     };
 
     const handleClick = () => {
-        navigate(`/ambiente-esportivo/${props.slug}/${props.quadra.id}`) // Navega para a rota "/detalhes"
+        navigate(`/ambiente-esportivo/${props.slug}/${props.quadra.id}`, {state:{quadra: props.quadra}}) // Navega para a rota "/detalhes"
 };
 
     const style = {

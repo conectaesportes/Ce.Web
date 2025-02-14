@@ -1,26 +1,30 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { format, addDays } from "date-fns";
+import { ptBR } from 'date-fns/locale';
 import Header from "../Components/Header";
 import "./Agendamento.scss";
 
-const Agendamento = (props) => {
+const Agendamento = () => {
+    const location = useLocation();
+    const quadra = location.state.quadra;
     const today = new Date();
-    const { slug, id } = useParams();
     const [selectedDay, setSelectedDay] = useState(today);
     const [availableTimes, setAvailableTimes] = useState([]);
-    const days = Array.from({ length: 15 }, (_, i) =>
-        format(addDays(today, i), "dd/MM")
-    );
+    const days = Array.from({ length: 15 }, (_, i) => addDays(today, i));
 
-    useState(() => {
-        setSelectedDay(format(today, "yyyy-MM-dd"));
-    }, []);
+    // useEffect(() => {
+    //     setSelectedDay(today);
+    // }, [today]);
     //const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     const handleDayClick = (day) => {
         setSelectedDay(day);
+
+        console.log(selectedDay === day);
+        console.log(day);
+        console.log(selectedDay);
         // Fetch available times for the selected day
         // This is just a placeholder, replace with actual data fetching logic
         setAvailableTimes(["10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM"]);
@@ -41,44 +45,64 @@ const Agendamento = (props) => {
     return (
         <div className="container-agendamento page">
             <Header></Header>
-            <h1>Agendamento Area {slug + id}</h1>
-
-            <h2>Select a day:</h2>
-            <div className="seletor-data">
-                <button
-                    className="arrow-button btn-left"
-                    onClick={() => scroll("left")}
-                >
-                    left
-                </button>
-                <div className="dias" ref={scrollRef}>
-                    {days.map((day) => (
-                        <button
-                            className="dia"
-                            key={day}
-                            onClick={() => handleDayClick(day)}
-                        >
-                            {day}
-                        </button>
-                    ))}
+            <div className="header">
+                <div className="container-logo">
+                    <img src={quadra.imgLink}></img>
                 </div>
-
-                <button
-                    className="arrow-button btn-right"
-                    onClick={() => scroll("right")}
-                >
-                    right
-                </button>
+                <div className="container-info">
+                    <h3 className="title">{quadra.nome}</h3>
+                    <p></p>
+                </div>
             </div>
 
-            <div>
-                <h2>Available times for {selectedDay}:</h2>
+            <div className="main-content">
+                <h3>Escolha dia e horário:</h3>
+                <div className="seletor-data">
+                    <button
+                        className="arrow-button btn-left"
+                        onClick={() => scroll("left")}
+                    >
+                        <i
+                            className="fa fa-chevron-left"
+                            aria-hidden="true"
+                        ></i>
+                    </button>
+                    <div className="dias" ref={scrollRef}>
+                        {days.map((day) => (
+                            <button
+                            key={day}
+                            onClick={() => handleDayClick(day)}
+                                className={`dia ${
+                                    format(selectedDay, "dd/MM") === format(day, "dd/MM") ? "selected" : ""
+                                }`}>
+                                {format(day, "EE", { locale: ptBR }).slice(0, 3).toLocaleUpperCase()} <br />
+                                {format(day, "dd/MM")}
+                            </button>
+                        ))}
+                    </div>
 
-                <ul>
-                    {availableTimes.map((time) => (
-                        <li key={time}>{time}</li>
-                    ))}
-                </ul>
+                    <button
+                        className="arrow-button btn-right"
+                        onClick={() => scroll("right")}
+                    >
+                        <i
+                            className="fa fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+                    </button>
+                </div>
+
+                <div>
+                    <h3>
+                        Horários livres em {format(selectedDay, "dd/MM/yyyy")}:
+                    </h3>
+
+                    <div className="container-horarios">
+                        {availableTimes.map((time) => (
+                            <div key={time} className="horario">{time}</div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );

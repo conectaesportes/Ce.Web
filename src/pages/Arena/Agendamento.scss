@@ -1,12 +1,24 @@
+@use '../../constants.scss' as *;
+
 .container-agendamento {
+
 
     .seletor-data {
         display: flex;
+        align-items: center;
         overflow: hidden;
         width: 100%;
     }
 
     .dias {
+        /* Remove o estilo do scroll */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        
+        &::-webkit-scrollbar { 
+            display: none;  /* Safari and Chrome */
+        }
+
         display: flex; /* Mantém os itens em linha */
         gap: 10px;
         width: 100%; /* Deve ser maior que a div pai para o scroll aparecer */
@@ -19,9 +31,34 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
+        margin: .5rem 0;
         display: flex;
         font-size: 0.8rem;
         align-items: center;
         justify-content: center;
+        color: $DARK_GRAY;
     }
+
+    .dia.selected{
+        background-color: $BTN_GREEN;
+        color: white;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .arrow-button{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: $BTN_GREEN;
+    }
+
+    .btn-left{
+        margin-right: .5rem;
+    }
+
+    .btn-right{
+        margin-left: .5rem;
+    }
+
+    
 }
