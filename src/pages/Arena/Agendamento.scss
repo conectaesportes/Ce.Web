@@ -60,5 +60,36 @@
         margin-left: .5rem;
     }
 
+    .container-horarios{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .horario{
+        display: flex;
+        padding: 1rem;
+        justify-content: space-between;
+        border: 1px solid $DARK_GRAY;
+        border-radius: 1rem;
+        color: $DARK_GRAY;
+
+        i{
+            font-size: 1.5rem;
+            color: $DARK_GRAY;
+        }
+    }
+
+    .horario.selected{
+        border: 2px solid $BTN_GREEN;
+        color: black;
+        font-weight: bold;
+
+        i{
+            color: $BTN_GREEN;
+        }
+    }
+
     
 }

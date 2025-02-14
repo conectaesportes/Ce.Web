@@ -2,9 +2,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { format, addDays } from "date-fns";
-import { ptBR } from 'date-fns/locale';
+import { ptBR } from "date-fns/locale";
 import Header from "../Components/Header";
 import "./Agendamento.scss";
+import "./Modal.scss";
+import { useTimeSelection } from "../../hooks/useTimeSelection";
 
 const Agendamento = () => {
     const location = useLocation();
@@ -18,6 +20,21 @@ const Agendamento = () => {
     //     setSelectedDay(today);
     // }, [today]);
     //const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const times = [
+        "08:00",
+        "09:00",
+        "10:00",
+        "11:00",
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00",
+        "16:00",
+        "17:00",
+        "18:00",
+    ];
+    const { selectedTimes, handleSelectTime, error, setError } =
+        useTimeSelection(times);
 
     const handleDayClick = (day) => {
         setSelectedDay(day);
@@ -27,7 +44,7 @@ const Agendamento = () => {
         console.log(selectedDay);
         // Fetch available times for the selected day
         // This is just a placeholder, replace with actual data fetching logic
-        setAvailableTimes(["10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM"]);
+        setAvailableTimes(times);
     };
 
     const scrollRef = useRef(null);
@@ -70,12 +87,19 @@ const Agendamento = () => {
                     <div className="dias" ref={scrollRef}>
                         {days.map((day) => (
                             <button
-                            key={day}
-                            onClick={() => handleDayClick(day)}
+                                key={day}
+                                onClick={() => handleDayClick(day)}
                                 className={`dia ${
-                                    format(selectedDay, "dd/MM") === format(day, "dd/MM") ? "selected" : ""
-                                }`}>
-                                {format(day, "EE", { locale: ptBR }).slice(0, 3).toLocaleUpperCase()} <br />
+                                    format(selectedDay, "dd/MM") ===
+                                    format(day, "dd/MM")
+                                        ? "selected"
+                                        : ""
+                                }`}
+                            >
+                                {format(day, "EE", { locale: ptBR })
+                                    .slice(0, 3)
+                                    .toLocaleUpperCase()}{" "}
+                                <br />
                                 {format(day, "dd/MM")}
                             </button>
                         ))}
@@ -98,11 +122,43 @@ const Agendamento = () => {
                     </h3>
 
                     <div className="container-horarios">
-                        {availableTimes.map((time) => (
-                            <div key={time} className="horario">{time}</div>
+                        {times.map((time, index) => (
+                            <div
+                                key={index}
+                                className={
+                                    "horario" +
+                                    (selectedTimes.includes(time)
+                                        ? " selected"
+                                        : "")
+                                }
+                                onClick={() => {
+                                    handleSelectTime(time);
+                                }}
+                            >
+                                <i
+                                    className="fa fa-check-circle"
+                                    aria-hidden="true"
+                                ></i>
+                                <div className="horario-text">{time}</div>
+                            </div>
                         ))}
                     </div>
                 </div>
+
+                {/* Modal de Erro */}
+                {error && (
+                    <div className="modal-overlay">
+                        <div className="modal-content">
+                            <p>{error}</p>
+                            <button
+                                className="close-button"
+                                onClick={() => setError("")} // Fecha o modal
+                            >
+                                Fechar
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
