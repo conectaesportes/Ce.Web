@@ -7,25 +7,6 @@
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-
-    .container-img{
-        display: flex;
-        justify-content: center;
-        width: 120px;
-        height: 100%;
-        cursor: pointer;
-        position: relative;
-
-        .ampliar{
-            position: absolute;
-            bottom: 0px;
-            background-color: rgba(255, 255, 255,0.5);
-            padding: .3rem;
-            color: constants.$DARK_GRAY;
-            font-size: .8rem;
-            border-radius: 5px; 
-        }
-    }
     
     .container-info{
         width: calc(95% - 120px);
@@ -57,30 +38,3 @@
     }
 
 }
-
-.modal-img-ampliada{
-
-    .MuiBox-root{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 1rem;
-    }
-
-    .imagem-ampliada{
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-    }
-
-    .close-modal{
-        padding: .5rem;
-        width: fit-content;
-        background-color: constants.$ERROR;
-        color: constants.$BLACK;
-        font-weight: 500;
-    }
-    
-}
-

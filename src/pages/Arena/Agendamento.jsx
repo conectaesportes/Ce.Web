@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { format, addDays } from "date-fns";
+import { format, addDays, addMinutes , parse} from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Header from "../Components/Header";
+import Foto from "./components/Foto";
 import "./Agendamento.scss";
-import "./Modal.scss";
 import { useTimeSelection } from "../../hooks/useTimeSelection";
+import ModalError from "../Components/ModalError";
 
 const Agendamento = () => {
     const location = useLocation();
@@ -59,13 +60,17 @@ const Agendamento = () => {
         }
     };
 
+    // Obtendo o intervalo e calculando o preço
+    const firstTime = selectedTimes[0];
+    const lastTime = selectedTimes[selectedTimes.length - 1];
+    const pricePerHour = 50; // Defina o valor por hora
+    const totalPrice = selectedTimes.length * pricePerHour;
+
     return (
         <div className="container-agendamento page">
             <Header></Header>
             <div className="header">
-                <div className="container-logo">
-                    <img src={quadra.imgLink}></img>
-                </div>
+                <Foto link={quadra.imgLink}></Foto>
                 <div className="container-info">
                     <h3 className="title">{quadra.nome}</h3>
                     <p></p>
@@ -122,7 +127,7 @@ const Agendamento = () => {
                     </h3>
 
                     <div className="container-horarios">
-                        {times.map((time, index) => (
+                        {times.slice(0, -1).map((time, index) => (
                             <div
                                 key={index}
                                 className={
@@ -139,24 +144,25 @@ const Agendamento = () => {
                                     className="fa fa-check-circle"
                                     aria-hidden="true"
                                 ></i>
-                                <div className="horario-text">{time}</div>
+                                <div className="horario-text">
+                                    {time + " às " + times[index + 1]}
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Modal de Erro */}
-                {error && (
-                    <div className="modal-overlay">
-                        <div className="modal-content">
-                            <p>{error}</p>
-                            <button
-                                className="close-button"
-                                onClick={() => setError("")} // Fecha o modal
-                            >
-                                Fechar
-                            </button>
-                        </div>
+                <ModalError message={error} onClose={() => setError("")} />
+
+                {/* Div Botton que aparece quando há horários selecionados */}
+                {selectedTimes.length > 0 && (
+                    <div className="bottom-up">
+                        <p className="text-lg font-bold">
+                            Intervalo: {firstTime} - {format(addMinutes(parse(lastTime, "HH:mm", new Date()),60), 'HH:mm')}
+                        </p>
+                        <p className="text-md">
+                            Total: R$ {totalPrice.toFixed(2)}
+                        </p>
                     </div>
                 )}
             </div>

@@ -91,5 +91,18 @@
         }
     }
 
+    .bottom-up{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: $BTN_GREEN;
+        color: white;
+        padding: 1rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        font-weight: bold;
+    }
+
     
 }
