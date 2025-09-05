@@ -1,35 +1,29 @@
-// src/context/AuthContext.js
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from "react";
+import { supabase } from "../services/supabaseClient";
 
 const AuthContext = createContext();
 
-// eslint-disable-next-line react/prop-types
-export const AuthProvider = ({children}) => {
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem('user');
-    console.log(savedUser)
-    return !savedUser ? JSON.parse(savedUser) : null;
-  });
+export function AuthContextProvider({ children }) {
+    const [user, setUser] = useState();
 
-  const login = (userData, token) => {
-    setUser(userData);
-    localStorage.setItem('authToken', token);
-    localStorage.setItem('user', JSON.stringify(userData));
-  };
+    useEffect(() => {
+        async function fetchUser() {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                setUser(user);
+                console.log(user);
+            }
+        }
+        fetchUser();
+    }, []);
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('user');
-  };
+    return (
+        <AuthContext.Provider value={{ user, setUser }}>
+            {children}
+        </AuthContext.Provider>
+    );
+}
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export const useAuth = () => useContext(AuthContext);
-
-
+export function useAuth() {
+    return useContext(AuthContext);
+}
