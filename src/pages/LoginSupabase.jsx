@@ -3,7 +3,7 @@ import "./Auth.scss";
 import { useState } from "react";
 import { supabase } from "../services/supabaseClient";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 import Header from "./Components/Header";
@@ -23,7 +23,7 @@ export default function LoginSupabase() {
     console.log(currentScreen);
     console.log(user);
 
-    if(user) {
+    if (user) {
         navigate("/dashboard");
     }
 
@@ -43,10 +43,20 @@ export default function LoginSupabase() {
         if (values.password.length < 6)
             toast.error("A senha deve ter pelo menos 6 caracteres.");
 
-        let { data: {user}, error } = await supabase.auth.signUp({
+        let {
+            data: { user },
+            error,
+        } = await supabase.auth.signUp({
             email: values.email,
             password: values.password,
         });
+
+        // const {
+        //     data: { user },
+        //     error,
+        // } = await supabase.functions.invoke("create_user", {
+        //     body: { email: values.email, password: values.password },
+        // });
 
         if (error) {
             console.log(error);
@@ -63,9 +73,16 @@ export default function LoginSupabase() {
         e.preventDefault();
         // setLoading(true);
 
-        let { data: {user}, error } = await supabase.auth.signInWithPassword({
-            email: values.email,
-            password: values.password,
+        // let { data: {user}, error } = await supabase.auth.signInWithPassword({
+        //     email: values.email,
+        //     password: values.password,
+        // });
+
+        const {
+            data: { user },
+            error,
+        } = await supabase.functions.invoke("create_user", {
+            body: { email: values.email, password: values.password },
         });
 
         // let { user, error } = await supabase.auth.signIn({
@@ -82,6 +99,29 @@ export default function LoginSupabase() {
 
         setUser(user);
         // setLoading(false);
+        toast.success("Login realizado com sucesso");
+        navigate("/dashboard");
+    };
+
+    const handleGoogleLogin = async (e) => {
+        e.preventDefault();
+        let {
+            data: { user },
+            error,
+        } = await supabase.auth.signInWithOAuth({
+            provider: "google",
+            // options: {
+            //     redirectTo: window.location.origin + "/dashboard",
+            // },
+        });
+
+        if (error) {
+            console.log(error);
+            toast.error("Erro ao autenticar com o Google.");
+            return;
+        }
+
+        setUser(user);
         toast.success("Login realizado com sucesso");
         navigate("/dashboard");
     };
@@ -103,10 +143,9 @@ export default function LoginSupabase() {
     return (
         <div className="Login page">
             {<Header></Header>}
-            {<ToastContainer/>}
+            {<ToastContainer />}
             {!user && currentScreen === 0 && (
                 <div className="container-body">
-                    
                     <div className="container-left"></div>
                     <div className="container-right ">
                         <div className="container-form">
@@ -136,6 +175,7 @@ export default function LoginSupabase() {
                                 <button
                                     type="submit"
                                     className="google-register"
+                                    onClick={handleGoogleLogin}
                                 >
                                     <i className="fa-brands fa-google"></i>
                                     Entrar com o Google
@@ -201,6 +241,7 @@ export default function LoginSupabase() {
                                 <button
                                     type="submit"
                                     className="google-register"
+                                    onClick={handleGoogleLogin}
                                 >
                                     <i className="fa-brands fa-google"></i>
                                     Entrar com o Google
