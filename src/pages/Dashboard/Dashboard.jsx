@@ -78,7 +78,7 @@ const Dashboard = () => {
         load();
     }, []);
 
-    console.log(arenas);
+    //console.log(arenas);
 
 
     const handleDivClick = (slug) => {

@@ -1,7 +1,5 @@
-
-import { width } from "@fortawesome/free-solid-svg-icons/fa0";
 import arenas from "../../../data/arenas";
-import Card from "./CArd";
+import Card from "./Card";
 const CardList = () => {
 
 

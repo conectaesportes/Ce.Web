@@ -10,6 +10,7 @@ export async function getEmpreendimentos() {
         throw error;
     }
 
+    console.log(data);
     return data;
 }
 

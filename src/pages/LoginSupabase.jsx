@@ -20,8 +20,8 @@ export default function LoginSupabase() {
         passwordConfirm: "",
     });
 
-    console.log(currentScreen);
-    console.log(user);
+    // console.log(currentScreen);
+    // console.log(user);
 
     if (user) {
         navigate("/dashboard");
@@ -86,8 +86,10 @@ export default function LoginSupabase() {
         const {
             data: { user },
             error,
-        } = await supabase.auth.signInWithPassword(
-            { email: values.email, password: values.password });
+        } = await supabase.auth.signInWithPassword({
+            email: values.email,
+            password: values.password,
+        });
 
         // let { user, error } = await supabase.auth.signIn({
         //     email: values.email,
@@ -114,10 +116,15 @@ export default function LoginSupabase() {
             error,
         } = await supabase.auth.signInWithOAuth({
             provider: "google",
-            // options: {
-            //     redirectTo: window.location.origin + "/dashboard",
-            // },
+            options: {
+                redirectTo: "http://localhost:5173/dashboard",
+            },
         });
+
+        const {
+            data: { user2 },
+        } = await supabase.auth.getUser();
+        console.log("User:", user2);
 
         if (error) {
             console.log(error);
