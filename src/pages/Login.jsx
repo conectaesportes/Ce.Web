@@ -32,7 +32,6 @@ const Login = () => {
     <div className='Login page'>
       <Header></Header>
       <div className='container-body'>
-
         <div className='container-left'></div>
         <div className='container-right '>
           <div className='container-form'>

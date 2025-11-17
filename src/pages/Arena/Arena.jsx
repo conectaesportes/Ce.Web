@@ -14,32 +14,40 @@ import { useEffect, useState } from "react";
 
 import "./Arena.scss";
 import Agendamento from "./Agendamento";
+import { getArenaData, getCourtsData } from "../../services/arenas";
 
 const Arena = () => {
     const { slug } = useParams(); // Recupera o slug da URL
     const navigate = useNavigate();
-    const pageData = arenas.find((item) => item.slug === slug); // Busca dados com base no slug
+    const [pageData, setPageData] = useState(null);
+    const [courtsData, setCourtsData] = useState(null);
+     // Busca dados com base no slug
 
-    
-    
+    useEffect(() => {
+        async function load() {
+            const data = await getArenaData(slug);
+            setPageData(data);
+            const dataCourts = await getCourtsData(data.user_id);
+            setCourtsData(dataCourts);
+        }
+        load();
+    }, [slug]);
 
-    if (!pageData) {
-        return <h1>Página não encontrada</h1>;
-    };
-
+    if (!pageData || !courtsData) {
+        return <h1>Carregando...</h1>;
+    }
 
     return (
         <div className="container-arena page">
             <Header></Header>
             <div className="header">
                 <div className="container-logo">
-                    <img src={pageData.logo}></img>
+                    <img src={pageData.avatar_url}></img>
                 </div>
                 <div className="container-info">
-                    <h3 className="title">{pageData.nome}</h3>
+                    <h3 className="title">{pageData.name}</h3>
                     <p>
-                        {pageData.endereco.rua}, {pageData.endereco.numero} -{" "}
-                        {pageData.endereco.bairro}
+                        {pageData.address}
                     </p>
                 </div>
             </div>
@@ -47,13 +55,13 @@ const Arena = () => {
                 <h3>Quadras Livres</h3>
 
                 <div className="list-areas">
-                    {pageData.areasDeJogo.map((area) => {
+                    {courtsData.map((area) => {
                         return (
-                                <AreaCard
-                                    key={area.id}
-                                    quadra={area}
-                                    slug={slug}
-                                ></AreaCard>
+                            <AreaCard
+                                key={area.id}
+                                quadra={area}
+                                slug={slug}
+                            ></AreaCard>
                         );
                     })}
                 </div>

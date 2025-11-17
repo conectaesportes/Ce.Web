@@ -1,16 +1,41 @@
 import { useState } from "react";
 import "./Header.scss"; // Create a CSS file for styling
 import Logo from "../../assets/logo.svg";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import { supabase } from "../../services/supabaseClient";
+import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const location = useLocation();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
+
+  const { user, setUser } = useAuth();
+
+  const handleLogout = async () => {
+
+    let { error } = await supabase.auth.signOut();
+
+     if (error) {
+                console.log(error);
+                toast.error("Erro ao sair.");
+                // setLoading(false);
+                return;
+            }
+
+    setUser(null);
+    toast.success("Logout realizado com sucesso");
+    navigate("/");
+  };
+
+
 
   return (
     <header className="header-component">
@@ -22,6 +47,17 @@ const Header = () => {
       }
 
       <img className="logo" src={Logo} alt="Logotipo Quadra Livre" ></img>
+
+       {isOpen && (
+        <div className="sidebar">
+          <button className="close-btn" onClick={() => setIsOpen(false)}>X</button>
+          <nav>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/profile">Perfil</a>
+            <a onClick={handleLogout}>Sair</a>
+          </nav>
+        </div>
+      )}
       
       <nav className={`nav ${isOpen ? "open" : ""}`}>
         <ul>

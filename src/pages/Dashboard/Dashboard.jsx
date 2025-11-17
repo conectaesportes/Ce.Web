@@ -8,15 +8,18 @@ import Header from "../../pages/Components/Header";
 import L from "leaflet";
 import logo from "../../assets/pin.svg";
 import user_pin from "../../assets/user-pin.svg";
-import arenas from "../../data/arenas";
-
+//import arenas from "../../data/arenas";
+import { useNavigate } from 'react-router-dom';
 import "./Dashboard.scss";
 import "./MapLeaflet.scss";
+import { getEmpreendimentos } from "../../services/arenas";
 
 const Dashboard = () => {
     const [location, setLocation] = useState(null); // Para armazenar latitude e longitude
     const [error, setError] = useState(null); // Para armazenar mensagens de erro
+    const [arenas, setArenas] = useState([]);
 
+    //pega o local atual do usuario
     useEffect(() => {
         const getLocation = () => {
             if (!navigator.geolocation) {
@@ -45,7 +48,11 @@ const Dashboard = () => {
         });
     }, []);
 
-    console.log(location);
+    //console.log(location);
+
+    const navigate = useNavigate();
+
+    // Configuração do ícone personalizado
 
     const customIcon = new L.Icon({
         className: "icon-pin",
@@ -62,6 +69,21 @@ const Dashboard = () => {
         iconAnchor: [10, 20], // Ponto de ancoragem (base do pin)
         popupAnchor: [0, -20], // Ponto de ancoragem do popup
     });
+
+    useEffect(() => {
+        async function load() {
+            const data = await getEmpreendimentos();
+            setArenas(data);
+        }
+        load();
+    }, []);
+
+    console.log(arenas);
+
+
+    const handleDivClick = (slug) => {
+        navigate(`/ambiente-esportivo/${slug}`); // Navega para a rota "/detalhes"
+    };
 
     return (
         <div className="container-dashboard">
@@ -87,17 +109,23 @@ const Dashboard = () => {
                         {arenas.map((arena, chave) => {
                             return (
                                 <Marker
+
                                     key={chave}
-                                    position={arena.endereco.coordenadas}
+                                    position={arena.latitude && arena.longitude ? [arena.latitude, arena.longitude] : [0, 0]}
                                     icon={customIcon}
+                                    eventHandlers={{
+                                        click: () => {
+                                            handleDivClick(arena.slug);
+                                        },
+                                    }}
                                 >
                                     <Tooltip
                                         permanent
                                         direction="top"
                                     >
-                                        {arena.nome}
+                                        {arena.name}
                                     </Tooltip>
-                                  
+
                                 </Marker>
                             );
                         })}

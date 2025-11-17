@@ -18,7 +18,6 @@ function Card(props) {
             }).isRequired,
         }).isRequired,
     };
-    
     const navigate = useNavigate();
     
     const handleDivClick = () => {

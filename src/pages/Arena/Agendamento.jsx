@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { format, addDays, addMinutes , parse} from "date-fns";
+import { format, addDays, addMinutes, parse } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Header from "../Components/Header";
 import Foto from "./components/Foto";
 import "./Agendamento.scss";
 import { useTimeSelection } from "../../hooks/useTimeSelection";
 import ModalError from "../Components/ModalError";
+import { getAvailability } from "../../services/arenas";
 
 const Agendamento = () => {
     const location = useLocation();
@@ -16,25 +17,64 @@ const Agendamento = () => {
     const [selectedDay, setSelectedDay] = useState(today);
     const [availableTimes, setAvailableTimes] = useState([]);
     const days = Array.from({ length: 15 }, (_, i) => addDays(today, i));
+    const [times, setTimes] = useState([
+    ]);
 
     // useEffect(() => {
     //     setSelectedDay(today);
     // }, [today]);
     //const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const times = [
-        "08:00",
-        "09:00",
-        "10:00",
-        "11:00",
-        "12:00",
-        "13:00",
-        "14:00",
-        "15:00",
-        "16:00",
-        "17:00",
-        "18:00",
-    ];
-    const { selectedTimes, handleSelectTime, error, setError } =
+    
+
+    useEffect(() => {
+        async function load() {
+            const numberDay = selectedDay.getDay();
+            const data = await getAvailability(quadra.id, numberDay);
+            setAvailableTimes(data);
+
+            const slots = [];
+            data.forEach((timeSlot) => {
+                // Validação: verificar se starttime e endtime existem
+                //console.log(timeSlot);
+                if (!timeSlot.start_time || !timeSlot.end_time) {
+                    console.warn("TimeSlot inválido:", timeSlot);
+                    return;
+                }
+
+                const start = parse(timeSlot.start_time, "HH:mm:ss", new Date());
+                const end = parse(timeSlot.end_time, "HH:mm:ss", new Date());
+                let cursor = start;
+
+                // safety: ignore invalid ranges
+                if (!(start < end)) return;
+
+                while (cursor < end) {
+                    const intervalStart = cursor;
+                    const intervalEnd = addMinutes(intervalStart, 60);
+
+                    // don't create an interval that starts at/after the end
+                    if (intervalStart >= end) break;
+
+                    const startStr = format(intervalStart, "HH:mm");
+                    const endStr = format(intervalEnd > end ? end : intervalEnd, "HH:mm");
+
+                    slots.push({
+                        start: startStr,
+                        end: endStr,
+                        price_per_hour: timeSlot.price_per_hour,
+                        isAvailable: true,
+                    });
+
+                    cursor = intervalEnd;
+                }
+            });
+            console.log("Slots disponíveis:", slots);
+            setTimes(slots);
+        }
+        load();
+    }, [selectedDay]);
+
+    const { selectedTimes, handleSelectTime, error, setError, totalPrice, setTotalPrice, setSelectedTimes } =
         useTimeSelection(times);
 
     const handleDayClick = (day) => {
@@ -46,6 +86,8 @@ const Agendamento = () => {
         // Fetch available times for the selected day
         // This is just a placeholder, replace with actual data fetching logic
         setAvailableTimes(times);
+        setSelectedTimes([]); // Limpa os horários selecionados ao mudar o dia  
+        setTotalPrice(0);
     };
 
     const scrollRef = useRef(null);
@@ -63,16 +105,14 @@ const Agendamento = () => {
     // Obtendo o intervalo e calculando o preço
     const firstTime = selectedTimes[0];
     const lastTime = selectedTimes[selectedTimes.length - 1];
-    const pricePerHour = 50; // Defina o valor por hora
-    const totalPrice = selectedTimes.length * pricePerHour;
 
     return (
         <div className="container-agendamento page">
             <Header></Header>
             <div className="header">
-                <Foto link={quadra.imgLink}></Foto>
+                <Foto link={quadra.image_url}></Foto>
                 <div className="container-info">
-                    <h3 className="title">{quadra.nome}</h3>
+                    <h3 className="title">{quadra.name}</h3>
                     <p></p>
                 </div>
             </div>
@@ -127,7 +167,7 @@ const Agendamento = () => {
                     </h3>
 
                     <div className="container-horarios">
-                        {times.slice(0, -1).map((time, index) => (
+                        {times.map((time, index) => (
                             <div
                                 key={index}
                                 className={
@@ -145,7 +185,7 @@ const Agendamento = () => {
                                     aria-hidden="true"
                                 ></i>
                                 <div className="horario-text">
-                                    {time + " às " + times[index + 1]}
+                                    {time.start + " às " + time.end}
                                 </div>
                             </div>
                         ))}
@@ -158,7 +198,8 @@ const Agendamento = () => {
                 {selectedTimes.length > 0 && (
                     <div className="bottom-up">
                         <p className="text-lg font-bold">
-                            Intervalo: {firstTime} - {format(addMinutes(parse(lastTime, "HH:mm", new Date()),60), 'HH:mm')}
+                            Intervalo: {firstTime.start} -{" "}
+                            {lastTime.end}
                         </p>
                         <p className="text-md">
                             Total: R$ {totalPrice.toFixed(2)}

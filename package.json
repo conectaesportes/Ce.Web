@@ -17,6 +17,9 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/material": "^6.3.1",
     "@mui/x-date-pickers": "^7.23.6",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.55.0",
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
@@ -25,6 +28,7 @@
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.28.0",
+    "react-toastify": "^11.0.5",
     "sass": "^1.83.1"
   },
   "devDependencies": {
