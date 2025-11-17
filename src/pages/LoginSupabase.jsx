@@ -49,6 +49,11 @@ export default function LoginSupabase() {
         } = await supabase.auth.signUp({
             email: values.email,
             password: values.password,
+            options: {
+                data: {
+                    role: "user",
+                },
+            },
         });
 
         // const {
