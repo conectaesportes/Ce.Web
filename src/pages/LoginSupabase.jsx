@@ -81,9 +81,8 @@ export default function LoginSupabase() {
         const {
             data: { user },
             error,
-        } = await supabase.functions.invoke("create_user", {
-            body: { email: values.email, password: values.password },
-        });
+        } = await supabase.auth.signInWithPassword(
+            { email: values.email, password: values.password });
 
         // let { user, error } = await supabase.auth.signIn({
         //     email: values.email,

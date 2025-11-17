@@ -6,8 +6,8 @@ import Foto from "./Foto";
 const AreaCard = (props) => {
     AreaCard.propTypes = {
         quadra: PropTypes.shape({
-            imgLink: PropTypes.string.isRequired,
-            nome: PropTypes.string.isRequired,
+            image_url: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
             id: PropTypes.number.isRequired,
         }).isRequired,
         slug: PropTypes.string.isRequired,
@@ -21,9 +21,9 @@ const AreaCard = (props) => {
 
     return (
         <div className="container-quadra-card">
-            <Foto link={props.quadra.imgLink}></Foto>
+            <Foto link={props.quadra.image_url}></Foto>
             <div className="container-info">
-                <h3 className="title">{props.quadra.nome}</h3>
+                <h3 className="title">{props.quadra.name}</h3>
                 <p className="descricao">
                     Tipo: Areia - Modalidade: Poliesportiva - Material incluso{" "}
                 </p>

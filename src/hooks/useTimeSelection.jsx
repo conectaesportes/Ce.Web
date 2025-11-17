@@ -1,13 +1,16 @@
+import { se } from "date-fns/locale";
 import { useState } from "react";
 
 export function useTimeSelection(times) {
   const [selectedTimes, setSelectedTimes] = useState([]);
   const [error, setError] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
 
 
   const handleSelectTime = (time) => {
     if (selectedTimes.length === 0) {
       setSelectedTimes([time]);
+      setTotalPrice(time.price_per_hour);
       return;
     }
 
@@ -22,6 +25,7 @@ export function useTimeSelection(times) {
       // Remove um horário se for o primeiro ou o último do intervalo
       if (time === firstTime || time === lastTime) {
         setSelectedTimes(selectedTimes.filter((t) => t !== time));
+        setTotalPrice(totalPrice - time.price_per_hour);
       }
     } else {
       // Só permite adicionar horários adjacentes ao intervalo
@@ -30,7 +34,7 @@ export function useTimeSelection(times) {
      if (
         index !== times.indexOf(firstTime) - 1 &&
         index !== times.indexOf(lastTime) + 1
-      ) {
+      ) { 
         setError("Você só pode selecionar horários consecutivos!");
         console.log("Você só pode selecionar horários consecutivos!");
         return;
@@ -38,8 +42,9 @@ export function useTimeSelection(times) {
       }
 
       setSelectedTimes([...selectedTimes, time]);
+      setTotalPrice(totalPrice + time.price_per_hour);
     }
   };
 
-  return { selectedTimes, handleSelectTime,error, setError};
+  return { selectedTimes, handleSelectTime,error, setError, totalPrice, setTotalPrice,setSelectedTimes };
 }
